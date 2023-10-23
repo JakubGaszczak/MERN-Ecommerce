@@ -76,6 +76,13 @@ const authUser = asyncHandler( async(req: Request, res: Response) => {
 // @desc    Logout user / clear cookie
 // @route   POST /api/users/logout
 // @access  Private
+const logoutUser = (req: Request, res: Response) => {
+    res.cookie("jwt", "", {
+        httpOnly: true,
+        expires: new Date(0)
+    })
+    res.status(200).json({ message: "Logged out successfully" })
+}
 
 
 // @desc    Get user profile
@@ -97,4 +104,4 @@ const authUser = asyncHandler( async(req: Request, res: Response) => {
 // @route   Delete /api/users
 // @access  Private/Admin
 
-export { registerUser, authUser }
+export { registerUser, authUser, logoutUser }
