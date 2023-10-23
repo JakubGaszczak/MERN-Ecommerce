@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-
+import generateToken from "../utils/generateToken"
 import User from "../models/userModel"
 import asyncHandler from "../middleware/asyncHandler"
 
@@ -29,7 +29,7 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
     })
 
     if (user) {
-        // generateToken(res, user._id)
+        generateToken(res, user._id)
 
         res.status(201).json({
             _id: user._id,
