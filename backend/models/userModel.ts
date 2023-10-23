@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import { model, Schema } from "mongoose";
 import { UserDocument } from "../types/user";

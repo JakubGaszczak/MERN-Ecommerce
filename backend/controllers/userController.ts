@@ -48,6 +48,29 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 // @desc    Auth user & get token
 // @route   POST /api/users/auth
 // @access  Public
+const authUser = asyncHandler( async(req: Request, res: Response) => {
+    const { email, password } = req.body as {
+        email: string,
+        password: string
+    }
+
+    const user = await User.findOne({ email })
+
+    if (user && (await user.matchPassword(password))) {
+        generateToken(res, user._id)
+
+        res.json({
+            _id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            isAdmin: user.isAdmin
+        })
+    } else {
+        res.status(401)
+        throw new Error("Invalid email or password")
+    }
+})
 
 
 // @desc    Logout user / clear cookie
@@ -74,4 +97,4 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 // @route   Delete /api/users
 // @access  Private/Admin
 
-export { registerUser }
+export { registerUser, authUser }
