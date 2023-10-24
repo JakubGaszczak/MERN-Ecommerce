@@ -138,10 +138,31 @@ const updateUserProfile = asyncHandler( async(req: Request, res: Response) => {
 // @desc    Get all users
 // @route   GET /api/users
 // @access  Private/Admin
+const getAllUsers = asyncHandler( async(req: Request, res: Response) => {
+    const users = await User.find({})
+    res.json(users)
+})
 
 
 // @desc    Delete user
 // @route   Delete /api/users
 // @access  Private/Admin
+const deleteUser = asyncHandler( async(req: Request, res: Response) => {
+    const { userId } = req.body
+    const user = await User.findById(userId)
 
-export { registerUser, authUser, logoutUser }
+    if (user) {
+        if (user.isAdmin) {
+            res.status(400)
+            throw new Error("Can not delete admin user")
+        }
+        await User.deleteOne({ _id: user._id })
+        res.json({ message: "User removed" })
+    } else {
+        res.status(404)
+        throw new Error("User not found")
+    }
+})
+
+
+export { registerUser, authUser, logoutUser, getUserProfile, updateUserProfile, getAllUsers, deleteUser }
