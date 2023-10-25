@@ -3,12 +3,6 @@ import asyncHandler from "./asyncHandler";
 import { NextFunction, Request, Response } from "express";
 import User from "../models/userModel";
 
-declare module "express" {
-  interface Request {
-    user?: any;
-  }
-}
-
 interface Decoded {
   userId?: string;
   iat?: Date;

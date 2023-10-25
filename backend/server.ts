@@ -1,11 +1,19 @@
 import express, { Request, Response } from "express";
-import cookieParser from "cookie-parser"
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 dotenv.config();
 import connectDB from "./config/db";
-import { notFound, errorHandler } from "./middleware/errorMiddleware"
-import userRoute from "./routes/userRoute"
-import productRoute from "./routes/productRoute"
+import { notFound, errorHandler } from "./middleware/errorMiddleware";
+import userRoute from "./routes/userRoute";
+import productRoute from "./routes/productRoute";
+
+declare global {
+  namespace Express {
+    interface Request {
+      user?: any; 
+    }
+  }
+}
 
 const PORT = process.env.PORT || 3002;
 
@@ -14,14 +22,14 @@ const app = express();
 connectDB();
 
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
 
-app.use("/api/users", userRoute)
-app.use("/api/products", productRoute)
+app.use("/api/users", userRoute);
+app.use("/api/products", productRoute);
 
-app.use(notFound)
-app.use(errorHandler)
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
+  console.log(`Server is running on port ${PORT}`);
 });
