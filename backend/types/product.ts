@@ -7,6 +7,9 @@ export interface Product {
     price: number,
     qty: number,
     category: string,
+    weight: number,
+    dimensions: string,
+    materials: string,
     rating: number,
     numReviews: number
 }
