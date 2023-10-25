@@ -9,6 +9,12 @@ declare module "express" {
   }
 }
 
+interface Decoded {
+  userId?: string;
+  iat?: Date;
+  exp?: Date;
+}
+
 const protect = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     let token: string;
@@ -17,9 +23,7 @@ const protect = asyncHandler(
 
     if (token) {
       try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {
-          userId: string;
-        };
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as Decoded
 
         req.user = await User.findById(decoded.userId).select("-password");
 
