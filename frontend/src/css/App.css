@@ -1,0 +1,16 @@
+.btn:focus {
+  box-shadow: none;
+}
+
+.modal-backdrop {
+  z-index: 1040;
+}
+
+.navbar-toggler {
+  font-size: 1.8rem;
+  border: none;
+}
+
+.icon {
+  font-size: 1.4rem;
+}/*# sourceMappingURL=App.css.map */
