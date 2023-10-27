@@ -9,10 +9,8 @@ const App: React.FC = () => {
     <>
       <ToastContainer />
       <Header />
-      <main className='py-3'>
-        <div className='container'>
+      <main>
           <Outlet />
-        </div>
       </main>
     </>
   );

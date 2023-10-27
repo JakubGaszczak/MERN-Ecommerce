@@ -5,7 +5,7 @@ import { BiMenuAltRight } from "react-icons/bi"
 const Header = () => {
   return (
     <header>
-      <nav className="navbar navbar-expand-md fixed-top border-bottom shadow">
+      <nav className="navbar bg-light navbar-expand-md fixed-top border-bottom shadow">
         <div className="container-fluid">
           <a className="navbar-brand h1 mb-0" href="#">
             MERN Ecom
