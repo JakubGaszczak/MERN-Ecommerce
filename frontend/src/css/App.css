@@ -13,4 +13,12 @@
 
 .icon {
   font-size: 1.4rem;
+}
+
+.card {
+  height: 13rem;
+  justify-content: center;
+}
+.card:hover {
+  border: 1px solid #562b08;
 }/*# sourceMappingURL=App.css.map */
