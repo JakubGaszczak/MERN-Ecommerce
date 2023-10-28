@@ -1,6 +1,6 @@
-import React from "react";
 import Banner from "../components/Banner";
 import bannerWatch from "../assets/bannerWatch.jpg";
+import bannerBelt from "../assets/bannerBelt.webp";
 import Sercives from "../components/Services/Sercives";
 import ProductsGrid from "../components/ProductsGrid/ProductsGrid";
 
@@ -14,6 +14,7 @@ const HomeScreen = () => {
       />
       <Sercives />
       <ProductsGrid />
+      <Banner image={bannerBelt} title="Unlock Exclusive Offers, Sign Up Today!" buttonText="Sign Up" />
     </>
   );
 };
