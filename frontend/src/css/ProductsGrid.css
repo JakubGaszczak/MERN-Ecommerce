@@ -1,0 +1,6 @@
+.products .card {
+  cursor: pointer;
+}
+.products .card-img-top {
+  height: 20rem;
+}/*# sourceMappingURL=ProductsGrid.css.map */

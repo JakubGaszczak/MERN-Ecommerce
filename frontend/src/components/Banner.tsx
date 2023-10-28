@@ -16,7 +16,8 @@ const Banner: React.FC<BannerProps> = ({ image, title, buttonText }) => {
   return (
     <section
       className="banner container-fluid d-flex align-items-center"
-      style={style}
+      style={style} 
+      id="home"
     >
       <div className="banner__container container">
         <h1 className="banner__title text-light" style={{maxWidth: "24rem"}}>{title}</h1>

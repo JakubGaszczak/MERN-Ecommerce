@@ -15,10 +15,17 @@
   font-size: 1.4rem;
 }
 
-.card {
+.services .card {
   height: 13rem;
   justify-content: center;
 }
-.card:hover {
+.services .card:hover {
   border: 1px solid #562b08;
+}
+
+.products .card {
+  cursor: pointer;
+}
+.products .card-img-top {
+  height: 20rem;
 }/*# sourceMappingURL=App.css.map */

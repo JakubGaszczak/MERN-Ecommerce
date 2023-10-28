@@ -1,8 +1,10 @@
-.card {
-  height: 13rem;
-  justify-content: center;
+.services {
+  .card {
+    height: 13rem;
+    justify-content: center;
 
-  &:hover {
-    border: 1px solid #562b08;
+    &:hover {
+      border: 1px solid #562b08;
+    }
   }
 }

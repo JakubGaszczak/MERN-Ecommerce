@@ -1,7 +1,7 @@
-.card {
+.services .card {
   height: 13rem;
   justify-content: center;
 }
-.card:hover {
+.services .card:hover {
   border: 1px solid #562b08;
 }/*# sourceMappingURL=Services.css.map */
