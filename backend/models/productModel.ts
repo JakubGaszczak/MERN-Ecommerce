@@ -52,10 +52,6 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
-    dimensions: {
-        type: String,
-        required: true
-    },
     materials: {
         type: String,
         required: true

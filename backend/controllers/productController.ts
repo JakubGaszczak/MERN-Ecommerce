@@ -14,7 +14,6 @@ const addProduct = asyncHandler(async (req: Request, res: Response) => {
     category,
     qty,
     weight,
-    dimensions,
     materials,
   } = req.body;
 
@@ -26,7 +25,6 @@ const addProduct = asyncHandler(async (req: Request, res: Response) => {
     qty: qty,
     category: category,
     weight: weight,
-    dimensions: dimensions,
     materials: materials,
   });
 
@@ -68,6 +66,24 @@ const getAllProducts = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("Products not found");
   }
 });
+
+// @desc    Get products by category
+// @route   GET /api/products/category
+// @access  Public
+const getProductsByCategory = asyncHandler( async(req: Request, res: Response) => {
+  const { category } = req.params as {
+    category: string
+  }
+
+  const products = await Product.find({ category: category })
+
+  if (products) {
+    res.json(products)
+  } else {
+    res.status(404)
+    throw new Error("Products not found")
+  }
+})
 
 // @desc    Get product by ID
 // @route   GET /api/products/:id
@@ -132,4 +148,4 @@ const getTopRated = asyncHandler( async(req: Request, res: Response) => {
 })
 
 
-export { addProduct, deleteProduct, getAllProducts, getProductById, createReview, getTopRated };
+export { addProduct, deleteProduct, getAllProducts, getProductById, createReview, getTopRated, getProductsByCategory };

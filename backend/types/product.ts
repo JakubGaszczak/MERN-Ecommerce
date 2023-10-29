@@ -8,7 +8,6 @@ export interface Product {
     qty: number,
     category: string,
     weight: number,
-    dimensions: string,
     materials: string,
     rating: number,
     numReviews: number

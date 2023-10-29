@@ -2,9 +2,13 @@ import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MouseEvent } from "react";
 import { productsData } from "../../testData";
+import { useGetProductsByCategoryQuery } from "../../slices/productsApiSlice";
 
 const ProductsGrid = () => {
-  const [category, setCategory] = useState<string>("Products");
+  const [category, setCategory] = useState<string>("watches");
+
+  const { data: ProductsData } = useGetProductsByCategoryQuery(category)
+
   const uniqueCategories = [
     ...new Set(productsData.map((product) => product.category)),
   ];
