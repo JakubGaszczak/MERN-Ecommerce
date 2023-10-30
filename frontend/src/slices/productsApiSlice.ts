@@ -7,8 +7,13 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             query: (category) => ({
                 url: `${PRODUCTS_URL}/${category}`
             })
+        }),
+        getAllProducts: builder.query({
+            query: () => ({
+                url: PRODUCTS_URL
+            })
         })
     })
 })
 
-export const { useGetProductsByCategoryQuery } = productsApiSlice
+export const { useGetProductsByCategoryQuery, useGetAllProductsQuery } = productsApiSlice

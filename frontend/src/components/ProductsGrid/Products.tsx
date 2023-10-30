@@ -2,22 +2,26 @@ import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MouseEvent } from "react";
 import { productsData } from "../../testData";
-import { useGetProductsByCategoryQuery } from "../../slices/productsApiSlice";
+import { useGetAllProductsQuery, useGetProductsByCategoryQuery } from "../../slices/productsApiSlice";
+import { Product } from "../../types/product";
 
 const ProductsGrid = () => {
   const [category, setCategory] = useState<string>("watches");
 
-  const { data: ProductsData } = useGetProductsByCategoryQuery(category)
+  const { data: ProductsByCategoryData } = useGetProductsByCategoryQuery({})
+  const { data: ProductsAllData } = useGetAllProductsQuery({}) as { data: Product[] }
+
 
   const uniqueCategories = [
-    ...new Set(productsData.map((product) => product.category)),
+    ...new Set(ProductsAllData?.map((product) => product.category)),
   ];
+
 
   return (
     <section className="container products" id="products">
       <h1 className="products__title">{category}</h1>
       <div className="products__categories btn-group mt-3 mb-5">
-        {uniqueCategories.map((category) => (
+        {uniqueCategories?.map((category) => (
           <button
             onClick={(e: MouseEvent<HTMLButtonElement>) =>
               setCategory(category)
