@@ -6,16 +6,8 @@ import { Request, Response } from "express";
 // @route   POST /api/products
 // @access  Private/Admin
 const addProduct = asyncHandler(async (req: Request, res: Response) => {
-  const {
-    name,
-    description,
-    image,
-    price,
-    category,
-    qty,
-    weight,
-    materials,
-  } = req.body;
+  const { name, description, image, price, category, qty, weight, materials } =
+    req.body;
 
   const product = new Product({
     name: name,
@@ -70,20 +62,20 @@ const getAllProducts = asyncHandler(async (req: Request, res: Response) => {
 // @desc    Get products by category
 // @route   GET /api/products/category
 // @access  Public
-const getProductsByCategory = asyncHandler( async(req: Request, res: Response) => {
-  const { category } = req.params as {
-    category: string
-  }
+const getProductsByCategory = asyncHandler(
+  async (req: Request, res: Response) => {
+    const { category } = req.params;
 
-  const products = await Product.find({ category: category })
+    const products = await Product.find({ category: category });
 
-  if (products) {
-    res.json(products)
-  } else {
-    res.status(404)
-    throw new Error("Products not found")
+    if (products) {
+      res.json(products);
+    } else {
+      res.status(404);
+      throw new Error("Products not found");
+    }
   }
-})
+);
 
 // @desc    Get product by ID
 // @route   GET /api/products/:id
@@ -112,40 +104,47 @@ const createReview = asyncHandler(async (req: Request, res: Response) => {
     );
 
     if (alreadyReviewed) {
-        res.status(400)
-        throw new Error("Product already reviewed")
+      res.status(400);
+      throw new Error("Product already reviewed");
     }
 
     const review = {
-        user: req.user._id,
-        name: req.user.firstName,
-        comment: comment,
-        rating: rating,
-    }
+      user: req.user._id,
+      name: req.user.firstName,
+      comment: comment,
+      rating: rating,
+    };
 
-    product.reviews.push(review)
-    product.numReviews = product.reviews.length
+    product.reviews.push(review);
+    product.numReviews = product.reviews.length;
 
-    product.rating = product.reviews.reduce((acc: number, item: any) => 
-        item.rating + acc, 0
-    ) / product.reviews.length
+    product.rating =
+      product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
+      product.reviews.length;
 
-    await product.save()
-    res.status(201).json({ message: "Review added" })
+    await product.save();
+    res.status(201).json({ message: "Review added" });
   } else {
-    res.status(404)
-    throw new Error("Product not found")
+    res.status(404);
+    throw new Error("Product not found");
   }
 });
 
 // @desc    Get top rated products
 // @route   GET /api/products/top
 // @access  Public
-const getTopRated = asyncHandler( async(req: Request, res: Response) => {
-    const products = await Product.find({}).sort({ rating: -1 }).limit(3)
+const getTopRated = asyncHandler(async (req: Request, res: Response) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
 
-    res.json(products)
-})
+  res.json(products);
+});
 
-
-export { addProduct, deleteProduct, getAllProducts, getProductById, createReview, getTopRated, getProductsByCategory };
+export {
+  addProduct,
+  deleteProduct,
+  getAllProducts,
+  getProductById,
+  createReview,
+  getTopRated,
+  getProductsByCategory,
+};

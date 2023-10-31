@@ -3,12 +3,10 @@ import { addProduct, createReview, deleteProduct, getAllProducts, getProductById
 import { protect, admin } from "../middleware/authMiddleware"
 const router = express.Router()
 
-router.post("/", protect, admin, addProduct)
-router.delete("/:id", protect, admin, deleteProduct)
-router.get("/", getAllProducts)
-router.get("/top", getTopRated)
-router.post("/:category", getProductsByCategory)
-router.get("/:id", getProductById)
-router.post("/:id/reviews", protect, createReview)
+router.route("/").get(getAllProducts).post(protect, admin, addProduct)
+router.route("/top").get(getTopRated)
+router.route("/:category").get(getProductsByCategory)
+router.route("/:id/reviews").post(protect, createReview)
+router.route("/:id").get(getProductById).delete(protect, admin, deleteProduct)
 
 export default router

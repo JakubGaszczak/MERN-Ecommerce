@@ -1,21 +1,20 @@
 import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MouseEvent } from "react";
-import { productsData } from "../../testData";
-import { useGetAllProductsQuery, useGetProductsByCategoryQuery } from "../../slices/productsApiSlice";
-import { Product } from "../../types/product";
+import {
+  useGetAllProductsQuery,
+  useGetProductsByCategoryQuery,
+} from "../../slices/productsApiSlice";
 
 const ProductsGrid = () => {
   const [category, setCategory] = useState<string>("watches");
-
-  const { data: ProductsByCategoryData } = useGetProductsByCategoryQuery({})
-  const { data: ProductsAllData } = useGetAllProductsQuery({}) as { data: Product[] }
-
+  const { data: ProductsByCategoryData } =
+    useGetProductsByCategoryQuery(category);
+  const { data: ProductsAllData } = useGetAllProductsQuery({});
 
   const uniqueCategories = [
     ...new Set(ProductsAllData?.map((product) => product.category)),
   ];
-
 
   return (
     <section className="container products" id="products">
@@ -33,7 +32,7 @@ const ProductsGrid = () => {
         ))}
       </div>
       <div className="row products__grid">
-        {productsData.map((product) => (
+        {ProductsByCategoryData?.map((product) => (
           <div className="col-6 col-md-4 col-lg-3 mb-3">
             <div className="card p-0 border-0">
               <img
