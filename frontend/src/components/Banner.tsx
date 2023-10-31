@@ -1,10 +1,10 @@
-interface BannerProps {
+interface Props {
   image: string;
   title: string;
   buttonText: string;
 }
 
-const Banner: React.FC<BannerProps> = ({ image, title, buttonText }) => {
+const Banner: React.FC<Props> = ({ image, title, buttonText }) => {
   const style: React.CSSProperties = {
     height: "31rem",
     backgroundImage: `url(${image})`,

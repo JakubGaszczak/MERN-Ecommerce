@@ -2,7 +2,7 @@ import Banner from "../components/Banner";
 import bannerWatch from "../assets/bannerWatch.jpg";
 import bannerBelt from "../assets/bannerBelt.webp";
 import Sercives from "../components/Services/Sercives";
-import ProductsGrid from "../components/ProductsGrid/Products";
+import Products from "../components/Products/Products";
 
 const HomeScreen = () => {
   return (
@@ -13,7 +13,7 @@ const HomeScreen = () => {
         buttonText="Shop Now"
       />
       <Sercives />
-      <ProductsGrid />
+      <Products />
       <Banner image={bannerBelt} title="Unlock Exclusive Offers, Sign Up Today!" buttonText="Sign Up" />
     </>
   );
