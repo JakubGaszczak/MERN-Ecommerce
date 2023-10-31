@@ -1,14 +1,14 @@
-import { BiUserCircle } from "react-icons/bi"
-import { AiOutlineShoppingCart } from "react-icons/ai"
-import { BiMenuAltRight } from "react-icons/bi"
- 
+import { BiUserCircle } from "react-icons/bi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { BiMenuAltRight } from "react-icons/bi";
+
 const Header = () => {
   return (
     <header>
       <nav className="navbar bg-light navbar-expand-md fixed-top border-bottom shadow">
         <div className="container-fluid">
           <a className="navbar-brand h1 mb-0" href="#">
-            MERN Ecom
+            Elegance United
           </a>
           <button
             className="btn navbar-toggler"
@@ -65,10 +65,14 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link icon"><BiUserCircle /></a>
+                <a className="nav-link icon">
+                  <BiUserCircle />
+                </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link icon"><AiOutlineShoppingCart /></a>
+                <a className="nav-link icon">
+                  <AiOutlineShoppingCart />
+                </a>
               </li>
             </ul>
           </div>
