@@ -3,6 +3,7 @@ import bannerWatch from "../assets/bannerWatch.jpg";
 import bannerBelt from "../assets/bannerBelt.webp";
 import Sercives from "../components/Services/Sercives";
 import Products from "../components/Products/Products";
+import TopRated from "../components/TopRated";
 
 const HomeScreen = () => {
   return (
@@ -15,6 +16,7 @@ const HomeScreen = () => {
       <Sercives />
       <Products />
       <Banner image={bannerBelt} title="Unlock Exclusive Offers, Sign Up Today!" buttonText="Sign Up" />
+      <TopRated />
     </>
   );
 };

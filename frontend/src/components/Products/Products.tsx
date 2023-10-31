@@ -19,7 +19,8 @@ const Products = () => {
 
   return (
     <section className="container products" id="products">
-      <h1 className="products__title">{category}</h1>
+      <h1 className="products__title">Products</h1>
+      <h4 className="products__subtitle text-muted">{category}</h4>
       <div className="products__categories btn-group mt-3 mb-5">
         {uniqueCategories?.map((category) => (
           <button
