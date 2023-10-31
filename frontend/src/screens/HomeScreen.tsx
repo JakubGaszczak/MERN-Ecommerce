@@ -5,6 +5,7 @@ import Sercives from "../components/Services/Sercives";
 import Products from "../components/Products/Products";
 import TopRated from "../components/TopRated";
 import About from "../components/About";
+import Footer from "../components/Footer";
 
 const HomeScreen = () => {
   return (
@@ -19,6 +20,7 @@ const HomeScreen = () => {
       <Banner image={bannerBelt} title="Unlock Exclusive Offers, Sign Up Today!" buttonText="Sign Up" />
       <TopRated />
       <About />
+      <Footer />
     </>
   );
 };

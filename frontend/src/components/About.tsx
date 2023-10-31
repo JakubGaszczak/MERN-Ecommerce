@@ -1,9 +1,8 @@
-import React from "react";
 import aboutUsWatch from "../assets/aboutUsWatch.jpg";
 
 const About = () => {
   return (
-    <section className="about container my-3" id="about">
+    <section className="about container mb-5" id="about">
       <div className="row align-items-center justify-content-center">
         <div className="col-md">
           <h1 className="about__title mb-3">About Us</h1>
