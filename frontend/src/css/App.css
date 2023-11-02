@@ -27,7 +27,8 @@
   cursor: pointer;
 }
 
-.registerScreen {
+.registerScreen,
+.loginScreen {
   height: 100vh;
   background-image: url("../assets/registerBackground.jpg");
   background-repeat: no-repeat;
