@@ -6,7 +6,7 @@ const router = express.Router()
 router.route("/").get(getAllProducts).post(protect, admin, addProduct)
 router.route("/top").get(getTopRated)
 router.route("/:category").get(getProductsByCategory)
-router.route("/:id/reviews").post(protect, createReview)
 router.route("/:id").get(getProductById).delete(protect, admin, deleteProduct)
+router.route("/:id/reviews").post(protect, createReview)
 
 export default router

@@ -4,7 +4,7 @@ import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <section className="footer bg-body-secondary py-5">
+    <section className="footer bg-body-secondary py-5" id="contact">
       <div className="footer__container container">
         <div className="row">
           <div className="col-sm text-center">
