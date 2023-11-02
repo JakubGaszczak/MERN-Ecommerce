@@ -25,4 +25,12 @@
 
 .products .card {
   cursor: pointer;
+}
+
+.registerScreen {
+  height: 100vh;
+  background-image: url("../assets/registerBackground.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  object-fit: cover;
 }/*# sourceMappingURL=App.css.map */

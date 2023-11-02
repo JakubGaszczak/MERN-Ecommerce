@@ -11,12 +11,14 @@ import HomeScreen from "./screens/HomeScreen";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import ProductScreen from "./screens/ProductScreen";
+import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/" element={<HomeScreen />} />
       <Route path="/product/:id" element={<ProductScreen />} />
+      <Route path="/register" element={<RegisterScreen />} />
     </Route>
   )
 );
