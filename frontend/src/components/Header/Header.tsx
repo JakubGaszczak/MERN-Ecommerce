@@ -79,7 +79,7 @@ const Header = () => {
                       className="text-dark text-decoration-none"
                       to="/register"
                     >
-                      SignUp
+                      SignIn
                     </Link>
                   )}
                 </a>
