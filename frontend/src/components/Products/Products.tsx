@@ -22,8 +22,9 @@ const Products = () => {
       <h1 className="products__title">Products</h1>
       <h4 className="products__subtitle text-muted">{category}</h4>
       <div className="products__categories btn-group mt-3 mb-5">
-        {uniqueCategories?.map((category) => (
+        {uniqueCategories?.map((category, index) => (
           <button
+            key={index}
             onClick={(e: MouseEvent<HTMLButtonElement>) =>
               setCategory(category)
             }
