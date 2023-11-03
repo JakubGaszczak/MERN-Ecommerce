@@ -3,6 +3,8 @@ import { useRegisterUserMutation } from "../../slices/userApiSlice";
 import { FormEvent, useState } from "react";
 import { ChangeEvent } from "react";
 import { toast } from "react-toastify";
+import { useAppDispatch } from "../../hooks";
+import { setCredentials } from "../../slices/authSlice";
 
 const RegisterScreen = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -11,6 +13,7 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState<string>("");
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch()
 
   const [register] = useRegisterUserMutation();
 
@@ -18,7 +21,8 @@ const RegisterScreen = () => {
     e.preventDefault();
 
     try {
-      await register({ firstName, lastName, email, password }).unwrap();
+      const res = await register({ firstName, lastName, email, password }).unwrap();
+      dispatch(setCredentials({ ...res }))
       toast.success("Logged in successfully");
       navigate("/");
     } catch (error) {
