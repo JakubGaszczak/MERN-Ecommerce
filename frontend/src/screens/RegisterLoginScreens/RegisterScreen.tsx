@@ -23,7 +23,7 @@ const RegisterScreen = () => {
     try {
       const res = await register({ firstName, lastName, email, password }).unwrap();
       dispatch(setCredentials({ ...res }))
-      toast.success("Logged in successfully");
+      toast.success("Account created successfully");
       navigate("/");
     } catch (error) {
       console.log(error);
