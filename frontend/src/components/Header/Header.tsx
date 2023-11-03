@@ -1,8 +1,12 @@
 import { BiUserCircle } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiMenuAltRight } from "react-icons/bi";
+import { useAppSelector } from "../../hooks";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const { userInfo } = useAppSelector((state) => state.auth);
+
   return (
     <header>
       <nav className="navbar bg-light navbar-expand-md fixed-top border-bottom shadow">
@@ -65,13 +69,24 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link icon">
-                  <BiUserCircle />
+                <a className="nav-link">
+                  {userInfo !== null ? (
+                    <Link to="/profile">
+                      <BiUserCircle size={25} color="black" />
+                    </Link>
+                  ) : (
+                    <Link
+                      className="text-dark text-decoration-none"
+                      to="/register"
+                    >
+                      SignUp
+                    </Link>
+                  )}
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link icon">
-                  <AiOutlineShoppingCart />
+                <a className="nav-link">
+                  <AiOutlineShoppingCart size={25} color="black" />
                 </a>
               </li>
             </ul>
