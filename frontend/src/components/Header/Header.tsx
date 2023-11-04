@@ -69,7 +69,7 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link">
+                <a className="nav-link fw-bold">
                   {userInfo !== null ? (
                     <Link to="/profile">
                       <BiUserCircle size={25} color="black" />

@@ -1,12 +1,13 @@
 import { useLocation } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import AddReview from "../components/AddReview/AddReview";
 
 const ProductScreen = () => {
   const location = useLocation();
   const { product } = location.state;
 
   return (
-    <div className="container my-5">
+    <div className="container py-5">
       <div className="row gap-4 gap-md-0">
         <div className="col-md-5 d-flex justify-content-center">
           <img
@@ -51,11 +52,12 @@ const ProductScreen = () => {
         </div>
         <div className="row justify-content-center mt-3 mt-md-5">
           <div className="col-md-11">
-            <p className="fs-5 fw-bold">Product Description:</p>
+            <h5 className="fw-bold">Product Description:</h5>
             <p>{product.description}</p>
           </div>
         </div>
       </div>
+      <AddReview />
     </div>
   );
 };
