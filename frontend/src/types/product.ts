@@ -12,3 +12,10 @@ export interface Product {
     rating: number,
     numReviews: number
 }
+
+export interface Review {
+    user: string,
+    name: string,
+    comment: string,
+    rating: number
+}
