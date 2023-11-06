@@ -17,5 +17,6 @@ export interface Review {
     user: string,
     name: string,
     comment: string,
-    rating: number
+    rating: number,
+    createdAt: string
 }

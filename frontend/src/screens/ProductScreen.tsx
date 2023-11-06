@@ -58,7 +58,7 @@ const ProductScreen = () => {
         </div>
       </div>
       <AddReview id={product._id} />
-      <ReviewsGrid id={product.id} />
+      <ReviewsGrid id={product._id} />
     </div>
   );
 };

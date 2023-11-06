@@ -31,7 +31,7 @@ const AddReview: React.FC<Props> = ({ id }) => {
           toast.error("Failed to create review. Please try again.");
         }
       } else {
-        toast.error("Enter a comment")
+        toast.error("Enter a comment");
       }
     } else {
       navigate("/login");
