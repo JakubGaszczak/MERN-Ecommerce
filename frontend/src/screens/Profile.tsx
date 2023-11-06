@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiLogOutCircle } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useUpdateUserProfileMutation } from "../slices/userApiSlice";
+import {
+  useLogoutUserMutation,
+  useUpdateUserProfileMutation,
+} from "../slices/userApiSlice";
 import { toast } from "react-toastify";
-import { setCredentials } from "../slices/authSlice";
+import { setCredentials, logout } from "../slices/authSlice";
 
 const Profile = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -13,16 +16,23 @@ const Profile = () => {
   const [password, setPassword] = useState<string>("");
 
   const { userInfo } = useAppSelector((state) => state.auth);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [updateProfile] = useUpdateUserProfileMutation();
+  const [logoutUser] = useLogoutUserMutation();
 
   const updateUserProfile = async (e: FormEvent) => {
     e.preventDefault();
 
     try {
-      const res = await updateProfile({ firstName, lastName, email, password }).unwrap()
-      dispatch(setCredentials({ ...res }))
+      const res = await updateProfile({
+        firstName,
+        lastName,
+        email,
+        password,
+      }).unwrap();
+      dispatch(setCredentials({ ...res }));
       toast.success("Profiled updated");
     } catch (error) {
       console.log(error);
@@ -30,11 +40,25 @@ const Profile = () => {
     }
   };
 
+  const logoutHandler = async () => {
+    try {
+      await logoutUser().unwrap();
+      dispatch(logout());
+      navigate("/");
+      toast.success("Logged out");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="container my-5">
       <h1>Account</h1>
       <Link to="/">
-        <button className="btn d-flex align-items-center gap-1 text-decoration-underline p-0">
+        <button
+          onClick={logoutHandler}
+          className="btn d-flex align-items-center gap-1 text-decoration-underline p-0"
+        >
           <BiLogOutCircle /> Logout
         </button>
       </Link>
