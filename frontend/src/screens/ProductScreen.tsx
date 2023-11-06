@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
-import { AiOutlineArrowLeft } from "react-icons/ai";
 import AddReview from "../components/AddReview";
+import ReviewsGrid from "../components/ReviewsGrid";
 
 const ProductScreen = () => {
   const location = useLocation();
@@ -58,6 +58,7 @@ const ProductScreen = () => {
         </div>
       </div>
       <AddReview id={product._id} />
+      <ReviewsGrid id={product.id} />
     </div>
   );
 };
