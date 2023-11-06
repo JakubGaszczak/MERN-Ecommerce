@@ -19,10 +19,6 @@
   border: 1px solid #562b08;
 }
 
-.products .card {
-  cursor: pointer;
-}
-
 .registerScreen,
 .loginScreen {
   height: 100vh;

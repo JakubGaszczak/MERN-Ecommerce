@@ -8,10 +8,10 @@ interface Props {
 
 const ProductsGrid: React.FC<Props> = ({ productsData }) => {
   return (
-    <div className="row products__grid">
+    <div className="row">
       {productsData?.map((product, index) => (
         <div className="col-6 col-md-4 col-lg-3 mb-3" key={index}>
-          <Link to={`/product/${product._id}`} state={ { product: product } }>
+          <Link className="text-decoration-none" to={`/product/${product._id}`} state={ { product: product } }>
             <div className="card p-0 border-0">
               <img
                 className="card-img-top object-fit-cover rounded-3 shadow-sm"

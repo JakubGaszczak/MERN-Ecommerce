@@ -86,7 +86,9 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <a className="nav-link">
-                  <AiOutlineShoppingCart size={25} color="black" />
+                  <Link to="/cart">
+                    <AiOutlineShoppingCart size={25} color="black" />
+                  </Link>
                 </a>
               </li>
             </ul>
