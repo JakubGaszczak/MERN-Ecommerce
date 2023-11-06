@@ -24,6 +24,7 @@ const ReviewsGrid: React.FC<Props> = ({ id }) => {
                   <p className="small text-muted m-0">{`${day}.${month}.${year}`}</p>
                   <h6>{review.name}</h6>
                   <p className="small">{review.comment}</p>
+                  <span className="small">rating: {review.rating}/10</span>
                 </div>
               );
             })}
