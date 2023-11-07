@@ -13,6 +13,14 @@ export interface Product {
     numReviews: number
 }
 
+export interface CartItem {
+    image: string,
+    name: string, 
+    price: number,
+    _id: string, 
+    qty: number
+}
+
 export interface Review {
     user: string,
     name: string,

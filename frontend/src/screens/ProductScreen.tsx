@@ -5,6 +5,7 @@ import ReviewsGrid from "../components/ReviewsGrid";
 const ProductScreen = () => {
   const location = useLocation();
   const { product } = location.state;
+  console.log(product)
 
   return (
     <div className="container py-5">

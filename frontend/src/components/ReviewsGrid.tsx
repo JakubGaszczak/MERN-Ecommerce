@@ -20,7 +20,7 @@ const ReviewsGrid: React.FC<Props> = ({ id }) => {
               const day = dateString.getDate();
 
               return (
-                <div className="col-md-6" key={index}>
+                <div className="col-md-6 mb-3" key={index}>
                   <p className="small text-muted m-0">{`${day}.${month}.${year}`}</p>
                   <h6>{review.name}</h6>
                   <p className="small">{review.comment}</p>
