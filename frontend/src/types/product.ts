@@ -13,6 +13,14 @@ export interface Product {
     numReviews: number
 }
 
+export interface Review {
+    user: string,
+    name: string,
+    comment: string,
+    rating: number,
+    createdAt: string
+}
+
 export interface CartItem {
     image: string,
     name: string, 
@@ -21,10 +29,8 @@ export interface CartItem {
     qty?: number 
 }
 
-export interface Review {
-    user: string,
-    name: string,
-    comment: string,
-    rating: number,
-    createdAt: string
+export interface CartState {
+    cartItems: CartItem[],
+    totalQty: number,
+    itemsPrice?: string
 }
