@@ -69,27 +69,23 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link fw-bold">
-                  {userInfo !== null ? (
-                    <Link to="/profile">
-                      <BiUserCircle size={25} color="black" />
-                    </Link>
-                  ) : (
-                    <Link
-                      className="text-dark text-decoration-none"
-                      to="/register"
-                    >
-                      SignIn
-                    </Link>
-                  )}
-                </a>
+                {userInfo !== null ? (
+                  <Link className="nav-link" to="/profile">
+                    <BiUserCircle size={25} color="black" />
+                  </Link>
+                ) : (
+                  <Link
+                    className="nav-link fw-bold text-dark text-decoration-none"
+                    to="/register"
+                  >
+                    SignIn
+                  </Link>
+                )}
               </li>
               <li className="nav-item">
-                <a className="nav-link">
-                  <Link to="/cart">
-                    <AiOutlineShoppingCart size={25} color="black" />
-                  </Link>
-                </a>
+                <Link className="nav-link" to="/cart">
+                  <AiOutlineShoppingCart size={25} color="black" />
+                </Link>
               </li>
             </ul>
           </div>

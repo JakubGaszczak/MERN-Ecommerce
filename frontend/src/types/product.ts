@@ -18,7 +18,7 @@ export interface CartItem {
     name: string, 
     price: number,
     _id: string, 
-    qty: number
+    qty?: number 
 }
 
 export interface Review {

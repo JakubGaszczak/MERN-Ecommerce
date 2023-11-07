@@ -1,11 +1,20 @@
 import { useLocation } from "react-router-dom";
 import AddReview from "../components/AddReview";
 import ReviewsGrid from "../components/ReviewsGrid";
+import { useAppDispatch } from "../hooks";
+import { addToCart } from "../slices/cartSlice";
+import { toast } from "react-toastify";
 
 const ProductScreen = () => {
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const { product } = location.state;
-  console.log(product)
+
+  const addToCartHandler = () => {
+    const { image, price, name, _id } = product;
+    dispatch(addToCart({ image, price, name, _id }));
+    toast.success("Added to cart")
+  };
 
   return (
     <div className="container py-5">
@@ -49,7 +58,9 @@ const ProductScreen = () => {
               </p>
             </li>
           </ul>
-          <button className="btn btn-secondary mt-1">Add to Cart</button>
+          <button onClick={addToCartHandler} className="btn btn-secondary mt-1">
+            Add to Cart
+          </button>
         </div>
         <div className="row justify-content-center mt-3 mt-md-5">
           <div className="col-md-11">
