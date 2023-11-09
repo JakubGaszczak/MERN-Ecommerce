@@ -4,6 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { PiSmileySad } from "react-icons/pi"
 import { addToCart, clearCart, removeFromCart } from "../slices/cartSlice";
 import { CartItem } from "../types/product";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Cart = () => {
   const { cartItems, itemsPrice } = useAppSelector((state) => state.cart);
@@ -23,6 +24,7 @@ const Cart = () => {
 
   return (
     <div className="container my-5">
+      <ScrollToTop />
       <div className="row gap-5 gap-md-0">
         <div className="col-md-7">
           <h2>Shopping cart</h2>

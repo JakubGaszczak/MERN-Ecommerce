@@ -8,6 +8,7 @@ import {
 } from "../slices/userApiSlice";
 import { toast } from "react-toastify";
 import { setCredentials, logout } from "../slices/authSlice";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Profile = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -53,6 +54,7 @@ const Profile = () => {
 
   return (
     <div className="container my-5">
+      <ScrollToTop />
       <h1>Account</h1>
       <Link to="/">
         <button

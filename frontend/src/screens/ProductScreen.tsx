@@ -4,6 +4,7 @@ import ReviewsGrid from "../components/ReviewsGrid";
 import { useAppDispatch } from "../hooks";
 import { addToCart } from "../slices/cartSlice";
 import { toast } from "react-toastify";
+import ScrollToTop from "../components/ScrollToTop";
 
 const ProductScreen = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ const ProductScreen = () => {
 
   return (
     <div className="container py-5">
+      <ScrollToTop />
       <div className="row gap-4 gap-md-0">
         <div className="col-md-5 d-flex justify-content-center">
           <img
