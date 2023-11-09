@@ -1,7 +1,14 @@
-import { useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { AiOutlineClose } from "react-icons/ai"
+import { clearCart } from "../slices/cartSlice";
 
 const Cart = () => {
   const { cartItems, itemsPrice } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch()
+
+  const clearCartHandler = () => {
+    dispatch(clearCart())
+  }
 
   return (
     <div className="container my-5">
@@ -40,6 +47,7 @@ const Cart = () => {
               </div>
             </div>
           ))}
+          <button onClick={clearCartHandler} className="btn btn-danger mt-4">Clear Cart</button>
         </div>
         <div className="col-md-5">
           <h2>Cart totals</h2>
