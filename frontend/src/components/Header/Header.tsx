@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const { userInfo } = useAppSelector((state) => state.auth);
+  const { totalQty } = useAppSelector(state => state.cart)
 
   return (
     <header>
@@ -83,8 +84,9 @@ const Header = () => {
                 )}
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/cart">
+                <Link className="nav-link position-relative" to="/cart">
                   <AiOutlineShoppingCart size={25} color="black" />
+                  <span className="cart-counter small">{totalQty}</span>
                 </Link>
               </li>
             </ul>
