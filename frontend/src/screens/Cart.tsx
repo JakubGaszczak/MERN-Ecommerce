@@ -1,14 +1,25 @@
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { AiOutlineClose } from "react-icons/ai"
-import { clearCart } from "../slices/cartSlice";
+import { AiOutlineMinus } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
+import { PiSmileySad } from "react-icons/pi"
+import { addToCart, clearCart, removeFromCart } from "../slices/cartSlice";
+import { CartItem } from "../types/product";
 
 const Cart = () => {
   const { cartItems, itemsPrice } = useAppSelector((state) => state.cart);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const clearCartHandler = () => {
-    dispatch(clearCart())
-  }
+    dispatch(clearCart());
+  };
+
+  const addToCartHandler = (item: CartItem) => {
+    dispatch(addToCart(item));
+  };
+
+  const removeFromCartHandler = (item: CartItem) => {
+    dispatch(removeFromCart(item));
+  };
 
   return (
     <div className="container my-5">
@@ -31,23 +42,46 @@ const Cart = () => {
             </div>
           </div>
           <hr className="my-4"></hr>
-          {cartItems.map((item, index) => (
-            <div className="row mb-2" key={index}>
-              <div className="col-4">
-                <img className="img-fluid" src={item.image} />
+          {cartItems.length < 1 ? (
+            <p className="text-muted fs-5">Your cart is empty <PiSmileySad /></p>
+          ) : (
+            cartItems.map((item, index) => (
+              <div className="row mb-2" key={index}>
+                <div className="col-4">
+                  <img className="img-fluid" src={item.image} alt={item.name} />
+                </div>
+                <div className="col d-flex justify-content-center align-items-center">
+                  <p className="m-0">{item.name}</p>
+                </div>
+                <div className="col d-flex justify-content-center align-items-center">
+                  <span>x{item.qty}</span>
+                </div>
+                <div className="col d-flex justify-content-center align-items-center">
+                  <span>${item.price}</span>
+                </div>
+                <div className="row">
+                  <div className="col-4 d-flex justify-content-center">
+                    <button
+                      onClick={() => removeFromCartHandler(item)}
+                      className="btn"
+                    >
+                      <AiOutlineMinus />
+                    </button>
+                    <button
+                      onClick={() => addToCartHandler(item)}
+                      className="btn"
+                    >
+                      <AiOutlinePlus />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col d-flex justify-content-center align-items-center">
-                <p className="m-0">{item.name}</p>
-              </div>
-              <div className="col d-flex justify-content-center align-items-center">
-                <span>x{item.qty}</span>
-              </div>
-              <div className="col d-flex justify-content-center align-items-center">
-                <span>${item.price}</span>
-              </div>
-            </div>
-          ))}
-          <button onClick={clearCartHandler} className="btn btn-danger mt-4">Clear Cart</button>
+            ))
+          )}
+
+          <button onClick={clearCartHandler} className="btn btn-danger mt-4">
+            Clear Cart
+          </button>
         </div>
         <div className="col-md-5">
           <h2>Cart totals</h2>
