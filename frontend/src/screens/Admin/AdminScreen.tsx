@@ -4,7 +4,7 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { useLogoutUserMutation } from "../../slices/userApiSlice";
 import { logout } from "../../slices/authSlice";
 import { toast } from "react-toastify";
-import AddProduct from "../../components/AddProduct";
+import UpdateUserForm from "../../components/UpdateUserForm";
 
 const AdminScreen = () => {
   const dispatch = useAppDispatch();
@@ -25,16 +25,19 @@ const AdminScreen = () => {
 
   return (
     <div className="container my-5">
-      <h1>Dashboard</h1>
-      <Link to="/">
-        <button
-          onClick={logoutHandler}
-          className="btn d-flex align-items-center gap-1 text-decoration-underline p-0"
-        >
-          <BiLogOutCircle /> Logout
-        </button>
-      </Link>
-      <div className="row my-4">
+      <div className="row">
+        <div className="col-md-6">
+          <h1>Dashboard</h1>
+          <Link to="/">
+            <button
+              onClick={logoutHandler}
+              className="btn d-flex-inline align-items-center gap-1 text-decoration-underline p-0"
+            >
+              <BiLogOutCircle /> Logout
+            </button>
+          </Link>
+          <UpdateUserForm />
+        </div>
         <div className="col-md-6">
           <div className="card mb-3">
             <div className="card-header">Products</div>
