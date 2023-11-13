@@ -78,7 +78,7 @@ const Header = () => {
                 ) : (
                   <Link
                     className="nav-link fw-bold text-dark text-decoration-none"
-                    to="/register"
+                    to="/login"
                   >
                     SignIn
                   </Link>
