@@ -6,7 +6,7 @@ import { addToCart, clearCart, removeFromCart } from "../slices/cartSlice";
 import { CartItem } from "../types/product";
 import ScrollToTop from "../components/ScrollToTop";
 
-const Cart = () => {
+const CartScreen = () => {
   const { cartItems, itemsPrice } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
@@ -113,4 +113,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartScreen;

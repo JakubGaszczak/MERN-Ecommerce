@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { setCredentials, logout } from "../slices/authSlice";
 import ScrollToTop from "../components/ScrollToTop";
 
-const Profile = () => {
+const ProfileScreen = () => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -67,6 +67,7 @@ const Profile = () => {
       <div className="row">
         <div className="col-md-5">
           <form className="mt-5" onSubmit={updateUserProfile}>
+            <h5 className="mb-3">Update Profile</h5>
             <div className="mb-3">
               <label className="form-label">First Name</label>
               <input
@@ -120,4 +121,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileScreen;

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const { userInfo } = useAppSelector((state) => state.auth);
-  const { totalQty } = useAppSelector(state => state.cart)
+  const { totalQty } = useAppSelector((state) => state.cart);
 
   return (
     <header>
@@ -60,20 +60,21 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#about" className="nav-link">
-                  About
-                </a>
-              </li>
-              <li className="nav-item">
                 <a href="#contact" className="nav-link">
                   Contact
                 </a>
               </li>
               <li className="nav-item">
                 {userInfo !== null ? (
-                  <Link className="nav-link" to="/profile">
-                    <BiUserCircle size={25} color="black" />
-                  </Link>
+                  userInfo.isAdmin === true ? (
+                    <Link className="nav-link" to="/profileAdmin">
+                      <BiUserCircle size={25} color="black" />
+                    </Link>
+                  ) : (
+                    <Link className="nav-link" to="/profile">
+                      <BiUserCircle size={25} color="black" />
+                    </Link>
+                  )
                 ) : (
                   <Link
                     className="nav-link fw-bold text-dark text-decoration-none"
