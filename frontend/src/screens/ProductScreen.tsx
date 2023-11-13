@@ -14,7 +14,7 @@ const ProductScreen = () => {
   const addToCartHandler = () => {
     const { image, price, name, _id } = product;
     dispatch(addToCart({ image, price, name, _id }));
-    toast.success("Added to cart")
+    toast.success("Added to cart");
   };
 
   return (
