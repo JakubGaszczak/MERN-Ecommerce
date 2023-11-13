@@ -1,6 +1,6 @@
 
 export interface Product {
-    _id: string,
+    _id?: string,
     name: string,
     description: string,
     image: string,
@@ -9,8 +9,8 @@ export interface Product {
     category: string,
     weight: number,
     materials: string,
-    rating: number,
-    numReviews: number
+    rating?: number,
+    numReviews?: number
 }
 
 export interface Review {

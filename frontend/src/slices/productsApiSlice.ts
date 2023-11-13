@@ -5,6 +5,13 @@ import { Review } from "../types/product";
 
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    addProduct: builder.mutation<Product, Product>({
+      query: (data) => ({
+        url: PRODUCTS_URL,
+        method: "POST",
+        body: data,
+      }),
+    }),
     getProductsByCategory: builder.query<Product[], string>({
       query: (category) => ({
         url: `${PRODUCTS_URL}/${category}`,
@@ -42,6 +49,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
+  useAddProductMutation,
   useGetProductsByCategoryQuery,
   useGetAllProductsQuery,
   useGetTopRatedQuery,

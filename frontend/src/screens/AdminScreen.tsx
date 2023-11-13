@@ -4,6 +4,7 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { useLogoutUserMutation } from "../slices/userApiSlice";
 import { logout } from "../slices/authSlice";
 import { toast } from "react-toastify";
+import AddProduct from "../components/AddProduct";
 
 const AdminScreen = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ const AdminScreen = () => {
       </Link>
       <div className="row my-4">
         <div className="col">
-          <h5>Add a product</h5>
+          <AddProduct />
         </div>
       </div>
     </div>
