@@ -148,13 +148,12 @@ const getAllUsers = asyncHandler( async(req: Request, res: Response) => {
 // @route   Delete /api/users
 // @access  Private/Admin
 const deleteUser = asyncHandler( async(req: Request, res: Response) => {
-    const { userId } = req.body
-    const user = await User.findById(userId)
+    const user = await User.findById(req.params.id)
 
     if (user) {
         if (user.isAdmin) {
             res.status(400)
-            throw new Error("Can not delete admin user")
+            throw new Error("You can't delete admin user")
         }
         await User.deleteOne({ _id: user._id })
         res.json({ message: "User removed" })
