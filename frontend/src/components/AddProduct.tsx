@@ -1,8 +1,12 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAddProductMutation } from "../slices/productsApiSlice";
 import { toast } from "react-toastify";
 
-const AddProduct = () => {
+interface Props {
+  refetch: () => any
+}
+
+const AddProduct: React.FC<Props> = ({ refetch }) => {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [image, setImage] = useState<string>("");
@@ -28,6 +32,7 @@ const AddProduct = () => {
         weight,
         materials,
       }).unwrap();
+      refetch()
       toast.success("Product added");
     } catch (error) {
       console.log(error);

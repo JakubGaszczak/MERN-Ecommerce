@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import {
+  useDeleteProductMutation,
   useGetAllProductsQuery,
   useUpdateProductMutation,
 } from "../../slices/productsApiSlice";
@@ -16,8 +17,20 @@ const ProductPanelScreen = () => {
   const [weight, setWeight] = useState<number>(0);
   const [materials, setMaterials] = useState<string>("");
 
-  const { data: Products } = useGetAllProductsQuery({});
+  const { data: Products, refetch } = useGetAllProductsQuery({});
   const [updateProduct] = useUpdateProductMutation();
+  const [deleteProduct] = useDeleteProductMutation();
+
+  const deleteProductHandler = async (id: string) => {
+    try {
+      await deleteProduct(id).unwrap();
+      refetch()
+      toast.success("Product deleted")
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occurred while deleting the product");
+    }
+  };
 
   const updateProductHandler = async (e: FormEvent, _id: string) => {
     e.preventDefault();
@@ -34,6 +47,7 @@ const ProductPanelScreen = () => {
         weight,
         materials,
       }).unwrap();
+      refetch()
       toast.success("Product updated");
     } catch (error) {
       console.log(error);
@@ -46,7 +60,7 @@ const ProductPanelScreen = () => {
       <h1 className="mb-4">Product Panel</h1>
       <div className="row mb-4">
         <div className="col">
-          <AddProduct />
+          <AddProduct refetch={refetch} />
         </div>
       </div>
       <div className="row">
@@ -61,6 +75,12 @@ const ProductPanelScreen = () => {
                     src={product.image}
                     alt={`product ${product.name}`}
                   />
+                  <button
+                    onClick={() => deleteProductHandler(product._id!)}
+                    className="btn btn-danger small w-100 mt-3"
+                  >
+                    Delete Product
+                  </button>
                 </div>
                 <div className="col-8">
                   <div className="card-body">
