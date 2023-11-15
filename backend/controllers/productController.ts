@@ -45,6 +45,34 @@ const deleteProduct = asyncHandler(async (req: Request, res: Response) => {
   }
 });
 
+// @desc    Update product
+// @route   PUT /api/products
+// @access  Private/Admin
+const updateProduct = asyncHandler( async(req: Request, res: Response) => {
+  const { name, description, image, price, qty, category, weight, materials, id } = req.body
+
+  const product = await Product.findById(id)
+
+  if (product) {
+    product.name = name || product.name,
+    product.description = description || product.description,
+    product.image = image || product.image,
+    product.price = price || product.price,
+    product.qty = qty || product.qty,
+    product.category = category || product.category,
+    product.weight = weight || product.weight,
+    product.materials = materials || product.materials
+
+    await product.save()
+    res.sendStatus(204)
+
+  } else {
+    res.status(404)
+    throw new Error("Product not found")
+  }
+})
+
+
 // @desc    Get all products
 // @route   GET /api/products
 // @access  Public
@@ -152,6 +180,7 @@ const getTopRated = asyncHandler(async (req: Request, res: Response) => {
 });
 
 export {
+  updateProduct,
   addProduct,
   deleteProduct,
   getAllProducts,
