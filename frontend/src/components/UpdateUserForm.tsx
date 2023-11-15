@@ -79,7 +79,7 @@ const UpdateUserForm = () => {
           type="password"
         />
       </div>
-      <button type="submit" className="btn btn-dark mt-4">
+      <button type="submit" className="btn btn-dark mt-2 mb-5">
         Save Changes
       </button>
     </form>

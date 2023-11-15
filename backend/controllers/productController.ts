@@ -49,9 +49,9 @@ const deleteProduct = asyncHandler(async (req: Request, res: Response) => {
 // @route   PUT /api/products
 // @access  Private/Admin
 const updateProduct = asyncHandler( async(req: Request, res: Response) => {
-  const { name, description, image, price, qty, category, weight, materials, id } = req.body
+  const { name, description, image, price, qty, category, weight, materials, _id } = req.body
 
-  const product = await Product.findById(id)
+  const product = await Product.findById(_id)
 
   if (product) {
     product.name = name || product.name,

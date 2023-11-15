@@ -1,5 +1,9 @@
-import { ChangeEvent, useState } from "react";
-import { useGetAllProductsQuery } from "../../slices/productsApiSlice";
+import { ChangeEvent, FormEvent, useState } from "react";
+import {
+  useGetAllProductsQuery,
+  useUpdateProductMutation,
+} from "../../slices/productsApiSlice";
+import { toast } from "react-toastify";
 
 const ProductPanelScreen = () => {
   const [name, setName] = useState<string>("");
@@ -12,6 +16,29 @@ const ProductPanelScreen = () => {
   const [materials, setMaterials] = useState<string>("");
 
   const { data: Products } = useGetAllProductsQuery({});
+  const [updateProduct] = useUpdateProductMutation();
+
+  const updateProductHandler = async (e: FormEvent, _id: string) => {
+    e.preventDefault();
+
+    try {
+      await updateProduct({
+        _id,
+        name,
+        description,
+        image,
+        price,
+        qty,
+        category,
+        weight,
+        materials,
+      }).unwrap();
+      toast.success("Product updated");
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occurred while updating the product");
+    }
+  };
 
   return (
     <div className="container my-5">
@@ -30,7 +57,9 @@ const ProductPanelScreen = () => {
                 </div>
                 <div className="col-8">
                   <div className="card-body">
-                    <form>
+                    <form
+                      onSubmit={(e) => updateProductHandler(e, product._id!)}
+                    >
                       <div className="mb-2">
                         <label className="form-label small">Name</label>
                         <input
@@ -39,7 +68,7 @@ const ProductPanelScreen = () => {
                           }
                           type="text"
                           className="form-control"
-                          value={product.name}
+                          placeholder={product.name}
                           id="productName"
                         />
                       </div>
@@ -50,7 +79,7 @@ const ProductPanelScreen = () => {
                             setDescription(e.target.value)
                           }
                           className="form-control"
-                          value={product.description}
+                          placeholder={product.description}
                         />
                       </div>
                       <div className="mb-2">
@@ -62,7 +91,7 @@ const ProductPanelScreen = () => {
                           id="productImage"
                           type="url"
                           className="form-control"
-                          value={product.image}
+                          placeholder={product.image}
                         />
                       </div>
                       <div className="mb-2">
@@ -73,7 +102,7 @@ const ProductPanelScreen = () => {
                           }
                           type="number"
                           className="form-control"
-                          value={product.price}
+                          placeholder={`${product.price}`}
                           id="productPrice"
                         />
                       </div>
@@ -86,7 +115,7 @@ const ProductPanelScreen = () => {
                           type="number"
                           className="form-control"
                           id="productQuantity"
-                          value={product.qty}
+                          placeholder={`${product.qty}`}
                         />
                       </div>
                       <div className="mb-2">
@@ -98,7 +127,7 @@ const ProductPanelScreen = () => {
                           type="text"
                           className="form-control"
                           id="productCategory"
-                          value={product.category}
+                          placeholder={product.category}
                         />
                       </div>
                       <div className="mb-2">
@@ -110,7 +139,7 @@ const ProductPanelScreen = () => {
                           type="number"
                           className="form-control"
                           id="productWeight"
-                          value={product.weight}
+                          placeholder={`${product.weight}`}
                         />
                       </div>
                       <div className="mb-2">
@@ -122,7 +151,7 @@ const ProductPanelScreen = () => {
                           type="text"
                           className="form-control"
                           id="productMaterials"
-                          value={product.materials}
+                          placeholder={product.materials}
                         />
                       </div>
                       <button type="submit" className="btn btn-dark mt-2">
