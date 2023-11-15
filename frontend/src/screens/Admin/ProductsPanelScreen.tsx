@@ -4,6 +4,7 @@ import {
   useUpdateProductMutation,
 } from "../../slices/productsApiSlice";
 import { toast } from "react-toastify";
+import AddProduct from "../../components/AddProduct";
 
 const ProductPanelScreen = () => {
   const [name, setName] = useState<string>("");
@@ -42,10 +43,16 @@ const ProductPanelScreen = () => {
 
   return (
     <div className="container my-5">
-      <h2 className="mb-3">Product Panel</h2>
+      <h1 className="mb-4">Product Panel</h1>
+      <div className="row mb-4">
+        <div className="col">
+          <AddProduct />
+        </div>
+      </div>
       <div className="row">
-        <div className="col-md-7">
-          {Products?.map((product, index) => (
+        <h5>List of current products</h5>
+        {Products?.map((product, index) => (
+          <div className="col-md-6">
             <div className="card mb-3" key={index}>
               <div className="row">
                 <div className="col-4">
@@ -162,8 +169,8 @@ const ProductPanelScreen = () => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ const AddProduct = () => {
 
   return (
     <>
-      <h5>Add a product</h5>
+      <h5>Add a new product</h5>
       <form onSubmit={addProductHandler}>
         <div className="mb-3">
           <input
@@ -134,7 +134,7 @@ const AddProduct = () => {
             placeholder="materials"
           />
         </div>
-        <button className="btn btn-light" type="submit">
+        <button className="btn btn-dark" type="submit">
           Add Product
         </button>
       </form>
