@@ -5,11 +5,14 @@ import { useAppDispatch } from "../hooks";
 import { addToCart } from "../slices/cartSlice";
 import { toast } from "react-toastify";
 import ScrollToTop from "../components/ScrollToTop";
+import { useGetProductReviewsQuery } from "../slices/productsApiSlice";
 
 const ProductScreen = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const { product } = location.state;
+
+  const { data: productsReviews, refetch } = useGetProductReviewsQuery(product._id);
 
   const addToCartHandler = () => {
     const { image, price, name, _id } = product;
@@ -36,7 +39,7 @@ const ProductScreen = () => {
           <h5 className="fw-bold">${product.price}</h5>
 
           <p className="fs-5 mt-4">
-            Rating: <span>{product.rating}</span>
+            Rating: <span>{product.rating} / 10</span>
           </p>
 
           <p className="fs-5 mt-4">Product properties:</p>
@@ -71,8 +74,8 @@ const ProductScreen = () => {
           </div>
         </div>
       </div>
-      <AddReview id={product._id} />
-      <ReviewsGrid id={product._id} />
+      <AddReview id={product._id} refetch={refetch} />
+      <ReviewsGrid productsReviews={productsReviews!} />
     </div>
   );
 };

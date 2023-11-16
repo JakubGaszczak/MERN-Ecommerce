@@ -6,10 +6,11 @@ import { useAppSelector } from "../hooks";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
-  id: string;
+  id: string,
+  refetch: () => any
 }
 
-const AddReview: React.FC<Props> = ({ id }) => {
+const AddReview: React.FC<Props> = ({ id, refetch }) => {
   const [comment, setComment] = useState<string>("");
   const [rating, setRating] = useState<number>(1);
 
@@ -24,7 +25,8 @@ const AddReview: React.FC<Props> = ({ id }) => {
     if (userInfo) {
       if (comment !== "") {
         try {
-          await createReview({ id, comment, rating });
+          await createReview({ id, comment, rating }).unwrap()
+          refetch()
           toast.success("Created review successfully");
         } catch (error: any) {
           console.error(error);

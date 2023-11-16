@@ -21,7 +21,7 @@ const Footer = () => {
             </span>
             <p className="mt-3">
               Telefon: <br></br>
-              <a className="text-dark" href="tel:+123456789">123-456-789</a>
+              <a className="text-dark text-decoration-none" href="tel:+123456789">123-456-789</a>
             </p>
           </div>
           <div className="col-sm text-center">
@@ -30,7 +30,7 @@ const Footer = () => {
             </span>
             <p className="mt-3">
               Email: <br></br>
-              <a className="text-dark" href="mailto:przykladowy@email.com">przykladowy@email.com</a>
+              <a className="text-dark text-decoration-none" href="mailto:przykladowy@email.com">przykladowy@email.com</a>
             </p>
           </div>
         </div>

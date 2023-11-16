@@ -48,30 +48,38 @@ const deleteProduct = asyncHandler(async (req: Request, res: Response) => {
 // @desc    Update product
 // @route   PUT /api/products
 // @access  Private/Admin
-const updateProduct = asyncHandler( async(req: Request, res: Response) => {
-  const { name, description, image, price, qty, category, weight, materials, _id } = req.body
+const updateProduct = asyncHandler(async (req: Request, res: Response) => {
+  const {
+    name,
+    description,
+    image,
+    price,
+    qty,
+    category,
+    weight,
+    materials,
+    _id,
+  } = req.body;
 
-  const product = await Product.findById(_id)
+  const product = await Product.findById(_id);
 
   if (product) {
-    product.name = name || product.name,
-    product.description = description || product.description,
-    product.image = image || product.image,
-    product.price = price || product.price,
-    product.qty = qty || product.qty,
-    product.category = category || product.category,
-    product.weight = weight || product.weight,
-    product.materials = materials || product.materials
+    (product.name = name || product.name),
+      (product.description = description || product.description),
+      (product.image = image || product.image),
+      (product.price = price || product.price),
+      (product.qty = qty || product.qty),
+      (product.category = category || product.category),
+      (product.weight = weight || product.weight),
+      (product.materials = materials || product.materials);
 
-    await product.save()
-    res.sendStatus(204)
-
+    await product.save();
+    res.sendStatus(204);
   } else {
-    res.status(404)
-    throw new Error("Product not found")
+    res.status(404);
+    throw new Error("Product not found");
   }
-})
-
+});
 
 // @desc    Get all products
 // @route   GET /api/products
@@ -109,8 +117,8 @@ const getProductsByCategory = asyncHandler(
 // @route   GET /api/products/:id
 // @access  Public
 const getProductById = asyncHandler(async (req: Request, res: Response) => {
-  const { id } = req.params
-  const product = await Product.findById(id)
+  const { id } = req.params;
+  const product = await Product.findById(id);
 
   if (product) {
     res.json(product);
@@ -147,9 +155,9 @@ const createReview = asyncHandler(async (req: Request, res: Response) => {
     product.reviews.push(review);
     product.numReviews = product.reviews.length;
 
-    product.rating =
-      product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
-      product.reviews.length;
+    product.rating = parseFloat(
+      (product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length).toFixed(1)
+    );
 
     await product.save();
     res.status(201).json({ message: "Review added" });
@@ -159,16 +167,15 @@ const createReview = asyncHandler(async (req: Request, res: Response) => {
   }
 });
 
-
 // @desc    Get product reviews
 // @route   GET /api/products/:id/reviews
 // @access  Public
-const getProductReviews = asyncHandler( async(req: Request, res: Response) => {
-  const { id } = req.params
-  const product = await Product.findById(id)
+const getProductReviews = asyncHandler(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const product = await Product.findById(id);
 
-  res.json(product?.reviews)
-})
+  res.json(product?.reviews);
+});
 
 // @desc    Get top rated products
 // @route   GET /api/products/top
@@ -188,5 +195,5 @@ export {
   createReview,
   getTopRated,
   getProductsByCategory,
-  getProductReviews
+  getProductReviews,
 };

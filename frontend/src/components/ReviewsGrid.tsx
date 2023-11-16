@@ -1,12 +1,10 @@
-import { useGetProductReviewsQuery } from "../slices/productsApiSlice";
+import { Review } from "../types/product";
 
 interface Props {
-  id: string;
+  productsReviews: Review[];
 }
 
-const ReviewsGrid: React.FC<Props> = ({ id }) => {
-  const { data: productsReviews } = useGetProductReviewsQuery(id);
-
+const ReviewsGrid: React.FC<Props> = ({ productsReviews }) => {
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -22,9 +20,9 @@ const ReviewsGrid: React.FC<Props> = ({ id }) => {
               return (
                 <div className="col-md-6 mb-3" key={index}>
                   <p className="small text-muted m-0">{`${day}.${month}.${year}`}</p>
-                  <h6>{review.name}</h6>
-                  <p className="small">{review.comment}</p>
+                  <h6 className="m-0">{review.name}</h6>
                   <span className="small">rating: {review.rating}/10</span>
+                  <p className="border rounded small m-0 mt-2 p-1 py-3">{review.comment}</p>
                 </div>
               );
             })}
