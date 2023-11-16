@@ -39,24 +39,30 @@ const UsersTable: React.FC<Props> = ({ usersData, refetch }) => {
         </tr>
       </thead>
       <tbody>
-        {usersData?.map((user, index) => (
-          <tr key={index}>
-            <th scope="row">{index + 1}</th>
-            <td>
-              {user.firstName} {user.lastName}
-            </td>
-            <td>{user.email}</td>
-            <td>{user.isAdmin ? "True" : "False"}</td>
-            <td>
-              <button
-                onClick={() => deleteUserHandler(user._id)}
-                className="border-0 bg-dark p-0"
-              >
-                <FaRegTrashCan color="white" />
-              </button>
-            </td>
+        {usersData && usersData.length > 0 ? (
+          usersData.map((user, index) => (
+            <tr key={index}>
+              <th scope="row">{index + 1}</th>
+              <td>
+                {user.firstName} {user.lastName}
+              </td>
+              <td>{user.email}</td>
+              <td>{user.isAdmin ? "True" : "False"}</td>
+              <td>
+                <button
+                  onClick={() => deleteUserHandler(user._id)}
+                  className="border-0 bg-dark p-0"
+                >
+                  <FaRegTrashCan color="white" />
+                </button>
+              </td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan={5}>No current users</td>
           </tr>
-        ))}
+        )}
       </tbody>
     </table>
   );

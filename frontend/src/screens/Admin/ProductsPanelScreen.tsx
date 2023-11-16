@@ -22,13 +22,15 @@ const ProductPanelScreen = () => {
   const [deleteProduct] = useDeleteProductMutation();
 
   const deleteProductHandler = async (id: string) => {
-    try {
-      await deleteProduct(id).unwrap();
-      refetch()
-      toast.success("Product deleted")
-    } catch (error) {
-      console.log(error);
-      toast.error("An error occurred while deleting the product");
+    if (window.confirm("Are u sure?")) {
+      try {
+        await deleteProduct(id).unwrap();
+        refetch();
+        toast.success("Product deleted");
+      } catch (error: any) {
+        console.log(error);
+        toast.error(error.data.message);
+      }
     }
   };
 
@@ -47,7 +49,7 @@ const ProductPanelScreen = () => {
         weight,
         materials,
       }).unwrap();
-      refetch()
+      refetch();
       toast.success("Product updated");
     } catch (error) {
       console.log(error);
@@ -66,8 +68,8 @@ const ProductPanelScreen = () => {
       <div className="row">
         <h5>List of current products</h5>
         {Products?.map((product, index) => (
-          <div className="col-md-6">
-            <div className="card mb-3" key={index}>
+          <div className="col-md-6" key={index}>
+            <div className="card mb-3">
               <div className="row">
                 <div className="col-4">
                   <img

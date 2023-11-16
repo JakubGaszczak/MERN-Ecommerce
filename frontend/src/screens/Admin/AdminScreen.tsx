@@ -18,8 +18,9 @@ const AdminScreen = () => {
       dispatch(logout());
       navigate("/");
       toast.success("Logged out");
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
+      toast.error(error.data.message)
     }
   };
 

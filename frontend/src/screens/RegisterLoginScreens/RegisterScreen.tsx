@@ -25,9 +25,9 @@ const RegisterScreen = () => {
       dispatch(setCredentials({ ...res }))
       toast.success("Account created successfully");
       navigate("/");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      toast.error("Registration failed. Please try again.");
+      toast.error(error.data.message);
     }
   };
 

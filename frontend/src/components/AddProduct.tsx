@@ -34,9 +34,9 @@ const AddProduct: React.FC<Props> = ({ refetch }) => {
       }).unwrap();
       refetch()
       toast.success("Product added");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      toast.error("Invalid Credentials");
+      toast.error(error.data.message);
     }
   };
 

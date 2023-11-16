@@ -23,9 +23,9 @@ const LoginScreen = () => {
       dispatch(setCredentials({ ...res }))
       toast.success("Logged in successfully")
       navigate("/")
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
-      toast.error("Login failed. Please check your email and password")
+      toast.error(error.data.message)
     }
   }
 

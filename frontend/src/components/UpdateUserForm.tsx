@@ -27,9 +27,9 @@ const UpdateUserForm = () => {
       }).unwrap();
       dispatch(setCredentials({ ...res }));
       toast.success("Profiled updated");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      toast.error("Try again later");
+      toast.error(error.data.message);
     }
   };
 

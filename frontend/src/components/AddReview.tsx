@@ -18,7 +18,7 @@ const AddReview: React.FC<Props> = ({ id }) => {
 
   const [createReview] = useCreateReviewMutation();
 
-  const submitHandler = async (e: FormEvent) => {
+  const createReviewHandler = async (e: FormEvent) => {
     e.preventDefault();
 
     if (userInfo) {
@@ -26,9 +26,9 @@ const AddReview: React.FC<Props> = ({ id }) => {
         try {
           await createReview({ id, comment, rating });
           toast.success("Created review successfully");
-        } catch (error) {
+        } catch (error: any) {
           console.error(error);
-          toast.error("Failed to create review. Please try again.");
+          toast.error(error.data.message);
         }
       } else {
         toast.error("Enter a comment");
@@ -45,7 +45,7 @@ const AddReview: React.FC<Props> = ({ id }) => {
           <h5 className="fw-bold d-flex align-items-center gap-2">
             Add Review
           </h5>
-          <form onSubmit={submitHandler}>
+          <form onSubmit={createReviewHandler}>
             <div className="mb-3">
               <textarea
                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
