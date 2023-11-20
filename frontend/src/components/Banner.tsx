@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface Props {
   image: string;
   title: string;
@@ -21,7 +23,7 @@ const Banner: React.FC<Props> = ({ image, title, buttonText }) => {
     >
       <div className="banner__container container">
         <h1 className="banner__title text-light mb-4" style={{maxWidth: "26rem"}}>{title}</h1>
-        <button className="banner__btn btn btn-light">{buttonText}</button>
+        <Link to="register"><button className="banner__btn btn btn-light">{buttonText}</button></Link>
       </div>
     </section>
   );

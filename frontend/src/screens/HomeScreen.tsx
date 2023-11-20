@@ -15,7 +15,7 @@ const HomeScreen = () => {
       <Banner
         image={bannerWatch}
         title="Class and Elegance Combined"
-        buttonText="Shop Now"
+        buttonText="Join us"
       />
       <Sercives />
       <Products />
