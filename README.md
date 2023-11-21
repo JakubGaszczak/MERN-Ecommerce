@@ -1,12 +1,15 @@
 
 # MERN Ecommerce
 
-
-
-
 ## Demo Link
-
 https://github.com/JakubGaszczak
+
+## Table of Content:
+1. [Description](https://github.com/JakubGaszczak/MERN-Ecommerce#description)
+2. [Technologies Used](https://github.com/JakubGaszczak/MERN-Ecommerce#technologies-used)
+3. [ScreenShots](https://github.com/JakubGaszczak/MERN-Ecommerce#screenshots)
+4. [Setup](https://github.com/JakubGaszczak/MERN-Ecommerce#setup)
+
 ## Description
 
 Welcome to my MERN Ecommerce Store project! This elegant online store is designed to showcase and sell a variety of products, with a focus on men's accessories such as watches, belts, and sunglasses.
@@ -26,13 +29,6 @@ Features:
 - Admin Panel: The admin panel allows administrators to update product listings, manage existing products, and perform operations on user accounts for efficient store management,
 
 - Responsive Design: Whether you're browsing on a computer, tablet, or smartphone, our store is designed to provide a seamless experience across all devices
-## Screenshots
-![HomeScreen](https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/dda6f863-6612-477a-8a6a-35374dc17f67)
-![Dashboard](https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/08d990ba-c426-40a7-89ab-aaaa74aa8685)
-<img width="693" alt="ProductPanel" src="https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/50c9a35d-870b-4d90-9902-5a0367ce601c">
-![UserPanel](https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/6fbb4d7f-265f-406d-aac7-41eb984d5faa)
-
-
 
 ## Technologies Used
 
@@ -47,3 +43,18 @@ Features:
 - Redux: State management is handled with Redux to efficiently manage the application's state,
 
 - TypeScript: The project is developed using TypeScript to enhance code maintainability and provide static typing for a more robust development experience
+
+## Screenshots
+### HomeScreen
+<img width="100%" alt="ProductPanel" src="https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/dda6f863-6612-477a-8a6a-35374dc17f67">
+
+### Dashboard
+<img width="100%" height="100%" alt="ProductPanel" src="https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/08d990ba-c426-40a7-89ab-aaaa74aa8685">
+
+### ProductPanel
+<img width="100%" alt="ProductPanel" src="https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/50c9a35d-870b-4d90-9902-5a0367ce601c">
+
+### UserPanel
+<img width="100%" alt="ProductPanel" src="https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/6fbb4d7f-265f-406d-aac7-41eb984d5faa">
+
+## Setup
