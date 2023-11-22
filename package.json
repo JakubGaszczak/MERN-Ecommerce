@@ -3,7 +3,8 @@
     "start": "ts-node backend/server.ts",
     "server": "nodemon backend/server.ts",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.4",
