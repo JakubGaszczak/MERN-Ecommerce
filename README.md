@@ -51,10 +51,51 @@ Features:
 ### Dashboard
 <img width="100%" height="100%" alt="ProductPanel" src="https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/08d990ba-c426-40a7-89ab-aaaa74aa8685">
 
-### ProductPanel
-<img width="100%" alt="ProductPanel" src="https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/50c9a35d-870b-4d90-9902-5a0367ce601c">
-
 ### UserPanel
 <img width="100%" alt="ProductPanel" src="https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/6fbb4d7f-265f-406d-aac7-41eb984d5faa">
 
+### ProductPanel
+<img width="100%" alt="ProductPanel" src="https://github.com/JakubGaszczak/MERN-Ecommerce/assets/106550766/50c9a35d-870b-4d90-9902-5a0367ce601c">
+
 ## Setup
+Create a MongoDB database and obtain your MongoDB URI - https://www.mongodb.com
+
+### Env Variables
+add .env file 
+
+```
+NODE_ENV = development
+PORT = 3001
+MONGO_URI = your mongodb uri
+JWT_SECRET = 'abc123'
+```
+
+### Install Dependencies (frontend & backend)
+
+```
+npm install
+cd frontend
+npm install
+```
+
+### Run
+
+```
+# Run frontend (:3000) & backend (:3001)
+npm run dev
+
+# Run backend only
+npm run server
+```
+
+```
+Sample User Logins
+
+admin@gmail.com (Admin)
+12345678
+
+customer@gmail.com (Customer)
+12345678
+```
+
+
