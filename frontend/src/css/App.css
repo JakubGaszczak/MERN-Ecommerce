@@ -2,6 +2,10 @@
   box-shadow: none;
 }
 
+.mt-6 {
+  margin-top: 5rem;
+}
+
 .modal-backdrop {
   z-index: 1040;
 }
@@ -39,9 +43,13 @@
 
 .registerScreen,
 .loginScreen {
-  height: 100vh;
+  height: 100%;
   background-image: url("../assets/registerBackground.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   object-fit: cover;
+}
+
+.loginScreen {
+  height: 100vh;
 }/*# sourceMappingURL=App.css.map */

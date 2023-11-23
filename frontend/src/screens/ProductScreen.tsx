@@ -21,7 +21,7 @@ const ProductScreen = () => {
   };
 
   return (
-    <div className="container py-5">
+    <div className="container mt-6 mb-5">
       <ScrollToTop />
       <div className="row gap-4 gap-md-0">
         <div className="col-md-5 d-flex justify-content-center">

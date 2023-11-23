@@ -2,19 +2,22 @@ import { BiUserCircle } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiMenuAltRight } from "react-icons/bi";
 import { useAppSelector } from "../../hooks";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const { userInfo } = useAppSelector((state) => state.auth);
   const { totalQty } = useAppSelector((state) => state.cart);
 
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
     <header>
       <nav className="navbar bg-light navbar-expand-md fixed-top border-bottom shadow">
         <div className="container-fluid">
-          <a className="navbar-brand h1 mb-0" href="#">
+          <Link to="/" className="navbar-brand h1 m-0">
             Elegance United
-          </a>
+          </Link>
           <button
             className="btn navbar-toggler"
             type="button"
@@ -32,9 +35,14 @@ const Header = () => {
           aria-labelledby="offcanvasNavbarLabel"
         >
           <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-              MERN Ecom
-            </h5>
+            <Link
+              to="/"
+              className="offcanvas-title text-decoration-none text-black h5"
+              id="offcanvasNavbarLabel"
+              data-bs-dismiss="offcanvas"
+            >
+              Elegance United
+            </Link>
             <button
               type="button"
               className="btn-close"
@@ -44,34 +52,62 @@ const Header = () => {
           </div>
           <div className="offcanvas-body">
             <ul className="navbar-nav nav-underline d-flex align-items-center pe-4">
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="#products" className="nav-link">
-                  Products
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="#topRated" className="nav-link">
-                  TopRated
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="#contact" className="nav-link">
-                  Contact
-                </a>
-              </li>
+              {isHome && (
+                <li className="nav-item">
+                  <a href="#" className="nav-link" data-bs-dismiss="offcanvas">
+                    Home
+                  </a>
+                </li>
+              )}
+              {isHome && (
+                <li className="nav-item">
+                  <a
+                    href="#products"
+                    className="nav-link"
+                    data-bs-dismiss="offcanvas"
+                  >
+                    Products
+                  </a>
+                </li>
+              )}
+              {isHome && (
+                <li className="nav-item">
+                  <a
+                    href="#topRated"
+                    className="nav-link"
+                    data-bs-dismiss="offcanvas"
+                  >
+                    TopRated
+                  </a>
+                </li>
+              )}
+              {isHome && (
+                <li className="nav-item">
+                  <a
+                    href="#contact"
+                    className="nav-link"
+                    data-bs-dismiss="offcanvas"
+                  >
+                    Contact
+                  </a>
+                </li>
+              )}
               <li className="nav-item">
                 {userInfo !== null ? (
                   userInfo.isAdmin === true ? (
-                    <Link className="nav-link" to="/profileAdmin">
+                    <Link
+                      className="nav-link"
+                      to="/profileAdmin"
+                      data-bs-dismiss="offcanvas"
+                    >
                       <BiUserCircle size={25} color="black" />
                     </Link>
                   ) : (
-                    <Link className="nav-link" to="/profile">
+                    <Link
+                      className="nav-link"
+                      to="/profile"
+                      data-bs-dismiss="offcanvas"
+                    >
                       <BiUserCircle size={25} color="black" />
                     </Link>
                   )
@@ -79,13 +115,18 @@ const Header = () => {
                   <Link
                     className="nav-link fw-bold text-dark text-decoration-none"
                     to="/login"
+                    data-bs-dismiss="offcanvas"
                   >
                     SignIn
                   </Link>
                 )}
               </li>
               <li className="nav-item">
-                <Link className="nav-link position-relative" to="/cart">
+                <Link
+                  className="nav-link position-relative"
+                  to="/cart"
+                  data-bs-dismiss="offcanvas"
+                >
                   <AiOutlineShoppingCart size={25} color="black" />
                   <span className="cart-counter small">{totalQty}</span>
                 </Link>

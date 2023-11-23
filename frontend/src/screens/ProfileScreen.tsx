@@ -26,7 +26,7 @@ const ProfileScreen = () => {
   };
 
   return (
-    <div className="container my-5">
+    <div className="container mt-6 mb-5">
       <ScrollToTop />
       <h1>Account</h1>
       <Link to="/">

@@ -58,7 +58,7 @@ const ProductPanelScreen = () => {
   };
 
   return (
-    <div className="container my-5">
+    <div className="container mt-6 mb-5">
       <h1 className="mb-4">Product Panel</h1>
       <div className="row mb-4">
         <div className="col">

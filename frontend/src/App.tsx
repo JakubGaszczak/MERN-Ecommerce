@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify"
 import { useEffect } from 'react';
 import { useAppDispatch } from './hooks';
 import { logout } from './slices/authSlice';
+import Header from './components/Header/Header';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -24,6 +25,7 @@ const App: React.FC = () => {
   return (
     <>
       <ToastContainer />
+      <Header />
       <main>
           <Outlet />
       </main>

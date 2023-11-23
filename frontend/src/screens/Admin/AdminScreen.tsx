@@ -25,7 +25,7 @@ const AdminScreen = () => {
   };
 
   return (
-    <div className="container my-5">
+    <div className="container mt-6 mb-5">
       <div className="row">
         <div className="col-md-6">
           <h1>Dashboard</h1>

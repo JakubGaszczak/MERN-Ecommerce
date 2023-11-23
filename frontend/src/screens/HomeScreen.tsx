@@ -6,12 +6,10 @@ import Products from "../components/Products/Products";
 import TopRated from "../components/TopRated";
 import About from "../components/About";
 import Footer from "../components/Footer";
-import Header from "../components/Header/Header";
 
 const HomeScreen = () => {
   return (
     <>
-      <Header />
       <Banner
         image={bannerWatch}
         title="Class and Elegance Combined"

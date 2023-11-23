@@ -1,3 +1,7 @@
 .btn:focus {
   box-shadow: none;
+}
+
+.mt-6 {
+  margin-top: 5rem;
 }/*# sourceMappingURL=base.css.map */

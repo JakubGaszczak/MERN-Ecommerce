@@ -23,7 +23,7 @@ const CartScreen = () => {
   };
 
   return (
-    <div className="container my-5">
+    <div className="container mt-6">
       <ScrollToTop />
       <div className="row gap-5 gap-md-0">
         <div className="col-md-7">

@@ -31,7 +31,7 @@ const LoginScreen = () => {
 
   return (
     <div className="loginScreen">
-      <div className="container">
+      <div className="container py-5">
         <div className="row justify-content-center pt-4 px-3">
           <div className="col col-md-6 bg-light rounded-4 p-4">
             <h1 className="mb-5 fw-bold text-center">Sign In</h1>
