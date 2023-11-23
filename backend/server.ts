@@ -6,12 +6,12 @@ import connectDB from "./config/db";
 import { notFound, errorHandler } from "./middleware/errorMiddleware";
 import userRoute from "./routes/userRoute";
 import productRoute from "./routes/productRoute";
-import path from 'path'
+import path from "path";
 
 declare global {
   namespace Express {
     interface Request {
-      user?: any; 
+      user?: any;
     }
   }
 }
@@ -29,15 +29,15 @@ app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/build")))
+  app.use(express.static(path.join(process.cwd(), "frontend/build")));
 
   app.get("*", (req, res) =>
-  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-  )
+    res.sendFile(path.resolve(process.cwd(), "frontend", "build", "index.html"))
+  );
 } else {
   app.get("/", (req, res) => {
-    res.send("API is running")
-  })
+    res.send("API is running");
+  });
 }
 
 app.use(notFound);
