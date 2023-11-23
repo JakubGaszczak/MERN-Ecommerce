@@ -39,7 +39,9 @@ const ProductScreen = () => {
           <h5 className="fw-bold">${product.price}</h5>
 
           <p className="fs-5 mt-4">
-            Rating: <span>{product.rating} / 10</span>
+            Rating: <span>
+              {product.rating === 0 ? (`no ratings`) : (`${product.rating} / 10`)}
+            </span>
           </p>
 
           <p className="fs-5 mt-4">Product properties:</p>

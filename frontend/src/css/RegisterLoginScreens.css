@@ -1,12 +1,9 @@
 .registerScreen,
 .loginScreen {
+  min-height: 100vh;
   height: 100%;
   background-image: url("../assets/registerBackground.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   object-fit: cover;
-}
-
-.loginScreen {
-  height: 100vh;
 }/*# sourceMappingURL=RegisterLoginScreens.css.map */
