@@ -2,7 +2,7 @@
 # MERN Ecommerce
 
 ## Demo Link
-https://github.com/JakubGaszczak
+https://elegance-united.onrender.com
 
 ## Table of Content:
 1. [Description](https://github.com/JakubGaszczak/MERN-Ecommerce#description)
