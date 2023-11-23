@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { model, Schema } from "mongoose";
 import { UserDocument } from "../types/user";
 
