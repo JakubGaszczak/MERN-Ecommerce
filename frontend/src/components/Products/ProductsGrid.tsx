@@ -17,6 +17,7 @@ const ProductsGrid: React.FC<Props> = ({ productsData }) => {
                 className="card-img-top object-fit-cover rounded-3 shadow-sm"
                 src={product.image}
                 style={{ height: "20rem" }}
+                alt={product.name}
               />
               <div className="card-body">
                 <h6 className="card-title">{product.name}</h6>
